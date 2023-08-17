@@ -22,6 +22,11 @@ class SegmentedProgressBar : View, Runnable, ViewPager.OnPageChangeListener, Vie
             this.initSegments()
         }
 
+    var timePerSegmentMs: Long = resources.getInteger(R.integer.default_time_per_segment_ms).toLong()
+        set(value) {
+            field = value
+        }
+
     var margin: Int = resources.getDimensionPixelSize(R.dimen.default_segment_margin)
         private set
     var radius: Int = resources.getDimensionPixelSize(R.dimen.default_corner_radius)
@@ -38,10 +43,6 @@ class SegmentedProgressBar : View, Runnable, ViewPager.OnPageChangeListener, Vie
     var segmentStrokeColor: Int = Color.BLACK
         private set
     var segmentSelectedStrokeColor: Int = Color.BLACK
-        private set
-
-    var timePerSegmentMs: Long =
-        resources.getInteger(R.integer.default_time_per_segment_ms).toLong()
         private set
 
     private var segments = mutableListOf<Segment>()
