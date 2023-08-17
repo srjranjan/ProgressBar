@@ -25,7 +25,6 @@ class SegmentedProgressBar : View, Runnable, ViewPager.OnPageChangeListener, Vie
     var timePerSegmentMs: Long = resources.getInteger(R.integer.default_time_per_segment_ms).toLong()
         set(value) {
             field = value
-            this.initSegments()
         }
 
     var margin: Int = resources.getDimensionPixelSize(R.dimen.default_segment_margin)
