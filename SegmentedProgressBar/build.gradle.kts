@@ -1,8 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    apply { id("maven-publish") }
-
+    `maven-publish`
 }
 
 android {
@@ -53,15 +52,6 @@ publishing {
             }
         }
     }
-}
-tasks.register<Zip>("generateRepo") {
-    val publishTask = tasks.named(
-        "publishReleasePublicationToProgressBar",
-        PublishToMavenRepository::class.java
-    )
-    from(publishTask.map { it.repository.url })
-    into("progressbar")
-    archiveFileName.set("progressbar.zip")
 }
 
 dependencies {
