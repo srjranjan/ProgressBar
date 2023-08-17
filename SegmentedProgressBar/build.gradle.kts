@@ -11,7 +11,9 @@ android {
 
     defaultConfig {
         minSdk = 23
-
+        aarMetadata {
+            minCompileSdk = 29
+        }
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -51,6 +53,15 @@ publishing {
             }
         }
     }
+}
+tasks.register<Zip>("generateRepo") {
+    val publishTask = tasks.named(
+        "publishReleasePublicationToProgressBar",
+        PublishToMavenRepository::class.java
+    )
+    from(publishTask.map { it.repository.url })
+    into("progressbar")
+    archiveFileName.set("progressbar.zip")
 }
 
 dependencies {
