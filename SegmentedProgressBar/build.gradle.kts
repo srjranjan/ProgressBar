@@ -44,8 +44,8 @@ publishing {
     publications {
         register<MavenPublication>("release") {
             groupId = "com.github.srjranjan"
-            artifactId = "CustomProgressBar"
-            version = "1.0.0"
+            artifactId = "ProgressBar"
+            version = "1.0.5"
 
             afterEvaluate {
                 from(components["release"])
